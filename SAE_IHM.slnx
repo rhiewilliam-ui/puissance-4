@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SAE_IHM_Interface/SAE_IHM_Interface.csproj" />
+  <Project Path="SAE_IHM_Systeme/SAE_IHM_Systeme.csproj" />
+</Solution>

@@ -1,0 +1,360 @@
+﻿<Window x:Class="SAE_IHM_Interface.FenetreJeu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SAE_IHM_Interface"
+        mc:Ignorable="d"
+        Title="Partie en cours"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        Background="{StaticResource AppBackground}"
+        FontFamily="Segoe UI"
+        Height="600"
+        Width="900">
+
+    <Window.Resources>
+
+        <Style x:Key="CaseButton" TargetType="Button">
+            <Setter Property="Background"      Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor"          Value="Hand"/>
+            <Setter Property="Padding"         Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter/>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+        <Viewbox Stretch="Uniform"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 Margin="30,24,30,24">
+
+            <Grid MinWidth="800" MinHeight="550">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0"
+                            x:Name="Bouton_retour"
+                            Click="Bouton_retour_Click"
+                            Width="40" Height="40"
+                            FontSize="20" FontWeight="Bold"
+                            HorizontalAlignment="Left"
+                            Margin="10,0,0,0">
+                        ←
+                    </Button>
+
+                    <Border Grid.Column="0"
+                            x:Name="ManchePill"
+                            Background="#E7EFFC"
+                            BorderBrush="#C7DBF7"
+                            BorderThickness="1.5"
+                            CornerRadius="999"
+                            Padding="16,6"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
+                            Margin="0,0,20,0"
+                            Visibility="Collapsed">
+                        <TextBlock x:Name="LabelManche"
+                                   Text="Manche 1"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   Foreground="#2563EB"/>
+                    </Border>
+
+                    <StackPanel Grid.Column="1"
+                                Orientation="Vertical"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <TextBlock x:Name="LabelTour"
+                                   Text="Chargement…"
+                                   FontSize="26"
+                                   FontWeight="SemiBold"
+                                   Foreground="{StaticResource TextPrimary}"
+                                   HorizontalAlignment="Center"/>
+                        <Border x:Name="TimerPill"
+                                Background="#FFF1F0"
+                                BorderBrush="#F6C9C4"
+                                BorderThickness="1.5"
+                                CornerRadius="999"
+                                Padding="14,4"
+                                Margin="0,7,0,0"
+                                HorizontalAlignment="Center"
+                                Visibility="Collapsed">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <Image Source="/Assets/clock.png" Width="16" Height="16"
+                                       Margin="0,0,7,0" VerticalAlignment="Center"/>
+                                <TextBlock x:Name="LabelTimer"
+                                           Text=""
+                                           FontSize="14"
+                                           FontWeight="SemiBold"
+                                           Foreground="#D32F2F"
+                                           VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+
+                    <Button Grid.Column="2"
+                            x:Name="Bouton_pause"
+                            Click="Bouton_pause_Click"
+                            Width="40" Height="40"
+                            HorizontalAlignment="Right"
+                            Margin="0,0,10,0">
+                        <Image Source="/Assets/pause.png" Width="18" Height="18"/>
+                    </Button>
+                </Grid>
+
+                <Grid Grid.Row="1" Margin="10"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0"
+                            Style="{StaticResource Card}"
+                            Padding="18,16"
+                            VerticalAlignment="Top" Margin="0,0,16,0">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                            <TextBlock x:Name="LabelJ1"
+                                       Text="J1"
+                                       FontSize="15" FontWeight="Bold"
+                                       Foreground="{StaticResource TextPrimary}"
+                                       HorizontalAlignment="Center" Margin="0,0,0,8"/>
+
+                            <Canvas x:Name="CanvasJ1" Width="34" Height="34"/>
+                            <TextBlock x:Name="LabelScoreJ1"
+                                       Text="" FontSize="26" FontWeight="Bold"
+                                       Foreground="{StaticResource TextPrimary}"
+                                       HorizontalAlignment="Center" Margin="0,8,0,0"
+                                       Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Column="1"
+                            CornerRadius="20"
+                            Padding="12">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#1E63C8" Offset="0"/>
+                                <GradientStop Color="#134A9E" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.Effect>
+                            <DropShadowEffect Color="#0E3C7A" BlurRadius="28"
+                                              ShadowDepth="8" Direction="270" Opacity="0.45"/>
+                        </Border.Effect>
+
+                        <ItemsControl x:Name="GrilleJeu"
+                                      MouseLeave="GrilleJeu_MouseLeave">
+
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Rows="6" Columns="7"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Margin="2"
+                                            Style="{StaticResource CaseButton}"
+                                            Click="Case_Click"
+                                            MouseEnter="Case_MouseEnter"
+                                            Tag="{Binding}">
+
+                                        <Viewbox Stretch="Uniform">
+                                        <Grid Width="55" Height="55">
+
+                                            <Ellipse Width="49" Height="49"
+                                                     Fill="#0D47A1"
+                                                     Opacity="0.6"/>
+
+                                            <Ellipse Width="45" Height="45"
+                                                     Fill="{Binding CouleurJeton}"
+                                                     Stroke="{Binding CouleurContour}"
+                                                     StrokeThickness="{Binding EpaisseurContour}"
+                                                     Visibility="{Binding VisibiliteCercle}"/>
+
+                                            <Ellipse Width="45" Height="45"
+                                                     Fill="{Binding CouleurApercu}"
+                                                     Opacity="0.35"
+                                                     Visibility="{Binding VisibiliteApercu}"/>
+
+                                            <Grid Visibility="{Binding VisibiliteCible}">
+                                                <Ellipse Width="45" Height="45"
+                                                         Fill="{Binding CouleurJeton}"
+                                                         Stroke="{Binding CouleurContour}"
+                                                         StrokeThickness="{Binding EpaisseurContour}"/>
+                                                <Ellipse Width="20" Height="20"
+                                                         Fill="Transparent"
+                                                         Stroke="{Binding CouleurContour}"
+                                                         StrokeThickness="{Binding EpaisseurContour}"/>
+                                            </Grid>
+
+                                            <Polygon Points="22.5,44 3.9,33.25 3.9,11.75 22.5,1 41.1,11.75 41.1,33.25"
+                                                     Fill="{Binding CouleurJeton}"
+                                                     Stroke="{Binding CouleurContour}"
+                                                     StrokeThickness="{Binding EpaisseurContour}"
+                                                     Visibility="{Binding VisibiliteHexagone}"/>
+                                        </Grid>
+                                        </Viewbox>
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+
+                        </ItemsControl>
+                    </Border>
+
+                    <Border Grid.Column="2"
+                            Style="{StaticResource Card}"
+                            Padding="18,16"
+                            VerticalAlignment="Top" Margin="16,0,0,0">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                            <TextBlock x:Name="LabelJ2"
+                                       Text="J2"
+                                       FontSize="15" FontWeight="Bold"
+                                       Foreground="{StaticResource TextPrimary}"
+                                       HorizontalAlignment="Center" Margin="0,0,0,8"/>
+                            <Canvas x:Name="CanvasJ2" Width="34" Height="34"/>
+                            <TextBlock x:Name="LabelScoreJ2"
+                                       Text="" FontSize="26" FontWeight="Bold"
+                                       Foreground="{StaticResource TextPrimary}"
+                                       HorizontalAlignment="Center" Margin="0,8,0,0"
+                                       Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Viewbox>
+
+        <Grid x:Name="Overlay"
+              Background="#A6101A2E"
+              Visibility="Collapsed">
+
+            <Border Style="{StaticResource Card}"
+                    Padding="34,30"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                    <TextBlock Text="⏸  Pause"
+                               FontSize="24" FontWeight="Bold"
+                               Foreground="{StaticResource TextPrimary}"
+                               HorizontalAlignment="Center" Margin="0,0,0,22"/>
+
+                    <Button Click="Bouton_reprendre_Click"
+                            Style="{StaticResource PrimaryButton}"
+                            Width="260" Height="56"
+                            FontSize="19"
+                            Margin="0,0,0,12">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Assets/play_blue.png" Width="18" Height="18"
+                                   Margin="0,0,10,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="Reprendre" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Click="Bouton_retour_Click"
+                            Width="260" Height="48"
+                            FontSize="15">
+                        ←  Quitter la partie
+                    </Button>
+
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Grid x:Name="OverlayResultat"
+              Background="Transparent"
+              Visibility="Collapsed">
+
+            <Border Width="300"
+                    Style="{StaticResource Card}"
+                    Padding="26,24"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Margin="0,0,40,0">
+
+                <StackPanel Orientation="Vertical"
+                            HorizontalAlignment="Center">
+
+                    <Image x:Name="ImgResultat"
+                           Width="60" Height="60"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,12"/>
+
+                    <TextBlock x:Name="LabelResultat"
+                               FontSize="20"
+                               FontWeight="SemiBold"
+                               Foreground="{StaticResource TextPrimary}"
+                               TextAlignment="Center"
+                               HorizontalAlignment="Center"
+                               TextWrapping="Wrap"
+                               Margin="0,0,0,20"/>
+
+                    <Button x:Name="BtnContinuer"
+                            Content="Continuer"
+                            Style="{StaticResource PrimaryButton}"
+                            Width="200" Height="46"
+                            FontSize="15"
+                            Margin="0,0,0,10"
+                            Visibility="Collapsed"
+                            Click="Bouton_continuer_Click"/>
+
+                    <Button x:Name="BtnRejouer"
+                            Content="Rejouer"
+                            Style="{StaticResource PrimaryButton}"
+                            Width="200" Height="46"
+                            FontSize="15"
+                            Margin="0,0,0,10"
+                            Click="Bouton_rejouer_Click"/>
+
+                    <Button x:Name="BtnQuitter"
+                            Content="Quitter"
+                            Width="200" Height="44"
+                            FontSize="15"
+                            Click="Bouton_quitter_Click"/>
+
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Border x:Name="ToastTimeout"
+                Style="{StaticResource Card}"
+                Padding="20,13"
+                VerticalAlignment="Top" HorizontalAlignment="Center"
+                Margin="0,18,0,0"
+                Visibility="Collapsed">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Image Source="/Assets/clock.png" Width="22" Height="22"
+                       Margin="0,0,12,0" VerticalAlignment="Center"/>
+                <TextBlock x:Name="ToastTexte"
+                           FontSize="15" FontWeight="SemiBold"
+                           Foreground="{StaticResource TextPrimary}"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

@@ -1,0 +1,80 @@
+# =========================================================
+#  .gitignore universel — C / C++ / C# / Python / Windows
+#  Place ce fichier à la RACINE de chaque dépôt.
+#  Il empêche de publier les fichiers compilés, les secrets
+#  et les fichiers temporaires : un dépôt sans ça fait amateur.
+# =========================================================
+
+# ---------- Secrets : NE JAMAIS PUBLIER ----------
+.env
+*.env
+appsettings.Development.json
+config.local.*
+secrets.json
+*.pem
+*.key
+
+# ---------- C / C++ ----------
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.so
+*.dll
+*.a
+*.lib
+*.d
+a.out
+
+# ---------- C# / .NET / Visual Studio ----------
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.userprefs
+*.cache
+packages/
+TestResults/
+*.VisualState.xml
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+
+# ---------- Node / Web ----------
+node_modules/
+dist/
+build/
+npm-debug.log*
+
+# ---------- Bases de données locales ----------
+*.sqlite
+*.sqlite3
+*.db
+dump.sql
+
+# ---------- VS Code ----------
+.vscode/*
+!.vscode/extensions.json
+
+# ---------- Windows / macOS ----------
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# ---------- Divers ----------
+*.log
+*.tmp
+*.bak
+~$*
+
+# ---------- Assistants IA / outils locaux ----------
+.claude/

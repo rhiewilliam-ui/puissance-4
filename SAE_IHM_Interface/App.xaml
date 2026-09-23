@@ -1,0 +1,124 @@
+﻿<Application x:Class="SAE_IHM_Interface.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:SAE_IHM_Interface"
+             StartupUri="FenetreAccueil.xaml">
+    <Application.Resources>
+
+        <LinearGradientBrush x:Key="AppBackground" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#F4F7FB" Offset="0"/>
+            <GradientStop Color="#E2E9F3" Offset="1"/>
+        </LinearGradientBrush>
+
+        <SolidColorBrush x:Key="CardBrush"      Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="TextPrimary"    Color="#1F2A37"/>
+        <SolidColorBrush x:Key="TextSecondary"  Color="#6B7280"/>
+        <SolidColorBrush x:Key="BorderSoft"     Color="#D9E1EC"/>
+        <SolidColorBrush x:Key="AccentColor"    Color="#2563EB"/>
+
+        <LinearGradientBrush x:Key="AccentBrush" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#3F86FF" Offset="0"/>
+            <GradientStop Color="#2563EB" Offset="1"/>
+        </LinearGradientBrush>
+
+        <DropShadowEffect x:Key="SoftShadow" Color="#22304A" BlurRadius="22"
+                          ShadowDepth="5" Direction="270" Opacity="0.16"/>
+
+        <Style x:Key="Card" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource CardBrush}"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="Effect" Value="{StaticResource SoftShadow}"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="#33405A"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid SnapsToDevicePixels="True">
+                            <Border x:Name="shDark" Margin="5" CornerRadius="16" Background="#ECF1F8">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="#B8C4D6" BlurRadius="14"
+                                                      ShadowDepth="5" Direction="315" Opacity="0.9"/>
+                                </Border.Effect>
+                            </Border>
+                            <Border x:Name="shLight" Margin="5" CornerRadius="16" Background="#ECF1F8">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="#FFFFFF" BlurRadius="14"
+                                                      ShadowDepth="5" Direction="135" Opacity="0.9"/>
+                                </Border.Effect>
+                            </Border>
+                            <Border x:Name="face" Margin="5" CornerRadius="16" Background="#ECF1F8"/>
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="face" Property="Background" Value="#F3F7FD"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="shDark" Property="Opacity" Value="0"/>
+                                <Setter TargetName="shLight" Property="Opacity" Value="0"/>
+                                <Setter TargetName="face" Property="Background" Value="#E0E7F1"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Foreground" Value="#2563EB"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid SnapsToDevicePixels="True">
+
+                            <Border x:Name="shDark" Margin="5" CornerRadius="18" Background="#ECF1F8">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="#B8C4D6" BlurRadius="16"
+                                                      ShadowDepth="6" Direction="315" Opacity="0.95"/>
+                                </Border.Effect>
+                            </Border>
+
+                            <Border x:Name="shLight" Margin="5" CornerRadius="18" Background="#ECF1F8">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="#FFFFFF" BlurRadius="16"
+                                                      ShadowDepth="6" Direction="135" Opacity="0.95"/>
+                                </Border.Effect>
+                            </Border>
+
+                            <Border x:Name="face" Margin="5" CornerRadius="18" Background="#ECF1F8"/>
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="face" Property="Background" Value="#F3F7FD"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="shDark" Property="Opacity" Value="0"/>
+                                <Setter TargetName="shLight" Property="Opacity" Value="0"/>
+                                <Setter TargetName="face" Property="Background" Value="#E0E7F1"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Application.Resources>
+</Application>

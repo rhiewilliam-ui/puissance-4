@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net10.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\SAE_IHM_Systeme\SAE_IHM_Systeme.csproj" />
+    </ItemGroup>
+	
+	<ItemGroup>
+	    <Resource Include="icon_profil.png"/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="DEV_EN_COURS.png"/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="Assets\*.png"/>
+	</ItemGroup>
+</Project>
