@@ -1,4 +1,4 @@
-# Puissance 4 — application C# avec adversaire IA
+# Puissance 4  application C# avec adversaire IA
 
 Application de bureau (C# / WPF) du jeu de Puissance 4, avec un adversaire artificiel basé sur
 l'algorithme Minimax et une heuristique d'évaluation conçue pour fonctionner sur **n'importe quelle
@@ -104,8 +104,8 @@ grilles à nombre de colonnes pair ou impair.
 ## Mon rôle
 
 Projet réalisé en équipe de 6 dans le cadre du BUT Informatique (SAÉ 2.01 et 2.02).
-J'ai conçu **l'architecture globale** du moteur — le découpage en classes et les responsabilités de
-chacune — ainsi que **l'heuristique d'évaluation et sa généralisation** à toutes les tailles de grille.
+J'ai conçu **l'architecture globale** du moteur  le découpage en classes et les responsabilités de
+chacune  ainsi que **l'heuristique d'évaluation et sa généralisation** à toutes les tailles de grille.
 
 ## Ce que j'en ai appris
 
@@ -116,4 +116,4 @@ l'IA sur différentes configurations.
 
 ---
 
-*SAÉ 2.01 & 2.02 — BUT Informatique, IUT d'Amiens, 2026.*
+*SAÉ 2.01 & 2.02  BUT Informatique, IUT d'Amiens, 2026.*
